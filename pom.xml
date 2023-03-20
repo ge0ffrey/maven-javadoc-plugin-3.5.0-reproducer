@@ -31,337 +31,35 @@
       <plugins>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.10.1</version>
-          <configuration>
-            <compilerArgs>
-              <arg>-Xmaxwarns</arg>
-              <arg>100</arg>
-              <arg>-Xlint</arg>
-              <arg>-Xlint:-rawtypes</arg>
-              <arg>-Xlint:-serial</arg>
-              <arg>-Xlint:-unchecked</arg>
-            </compilerArgs>
-            <showDeprecation>true</showDeprecation>
-            <showWarnings>true</showWarnings>
-            <source>1.8</source>
-            <target>11</target>
-            <testSource>1.8</testSource>
-            <testTarget>11</testTarget>
-          </configuration>
+          <version>3.11.0</version>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
-          <version>3.1.2</version>
-          <executions>
-            <execution>
-              <id>default-jar</id>
-              <configuration>
-                <archive>
-                  <manifestEntries combine.children="append">
-                    <Java-Version>17.0.4.1</Java-Version>
-                    <Java-Vendor>Eclipse Adoptium</Java-Vendor>
-                    <Os-Name>Linux</Os-Name>
-                    <Os-Arch>amd64</Os-Arch>
-                    <Os-Version>6.0.18-200.fc36.x86_64</Os-Version>
-                    <Automatic-Module-Name>reproducer</Automatic-Module-Name>
-                  </manifestEntries>
-                  <manifest>
-                    <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                    <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                  </manifest>
-                  <index>true</index>
-                </archive>
-                <excludes>
-                  <exclude>META-INF/JAXB/</exclude>
-                  <exclude>benchmark-with-import.xsd</exclude>
-                </excludes>
-              </configuration>
-            </execution>
-            <execution>
-              <id>test-jar</id>
-              <goals>
-                <goal>test-jar</goal>
-              </goals>
-              <configuration>
-                <skipIfEmpty>true</skipIfEmpty>
-                <excludes>
-                  <exclude>**/logback-test.xml</exclude>
-                </excludes>
-                <archive>
-                  <manifest>
-                    <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                    <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                  </manifest>
-                  <index>true</index>
-                  <manifestEntries>
-                    <Java-Version>17.0.4.1</Java-Version>
-                    <Java-Vendor>Eclipse Adoptium</Java-Vendor>
-                    <Os-Name>Linux</Os-Name>
-                    <Os-Arch>amd64</Os-Arch>
-                    <Os-Version>6.0.18-200.fc36.x86_64</Os-Version>
-                  </manifestEntries>
-                </archive>
-              </configuration>
-            </execution>
-          </executions>
+          <version>3.3.0</version>
           <configuration>
             <archive>
-              <manifest>
-                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-              </manifest>
-              <index>true</index>
-              <manifestEntries>
-                <Java-Version>17.0.4.1</Java-Version>
-                <Java-Vendor>Eclipse Adoptium</Java-Vendor>
-                <Os-Name>Linux</Os-Name>
-                <Os-Arch>amd64</Os-Arch>
-                <Os-Version>6.0.18-200.fc36.x86_64</Os-Version>
+              <manifestEntries combine.children="append">
+                <Automatic-Module-Name>reproducer</Automatic-Module-Name>
               </manifestEntries>
             </archive>
-            <excludes>
-              <exclude>META-INF/JAXB/</exclude>
-              <exclude>benchmark-with-import.xsd</exclude>
-            </excludes>
           </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-javadoc-plugin</artifactId>
           <version>3.5.0</version>
-          <configuration>
-            <author>false</author>
-            <failOnError>true</failOnError>
-            <failOnWarnings>true</failOnWarnings>
-            <header combine.self="override" />
-            <footer combine.self="override" />
-            <quiet>true</quiet>
-            <archive>
-              <index>true</index>
-              <manifest>
-                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-              </manifest>
-              <manifestEntries>
-                <Java-Version>17.0.4.1</Java-Version>
-                <Java-Vendor>Eclipse Adoptium</Java-Vendor>
-                <Os-Name>Linux</Os-Name>
-                <Os-Arch>amd64</Os-Arch>
-                <Os-Version>6.0.18-200.fc36.x86_64</Os-Version>
-              </manifestEntries>
-            </archive>
-            <additionalparam>-Xdoclint:none</additionalparam>
-            <additionalOptions>-Xdoclint:none</additionalOptions>
-          </configuration>
-        </plugin>
-        <plugin>
-          <artifactId>maven-source-plugin</artifactId>
-          <version>3.2.1</version>
-          <configuration>
-            <excludes>
-              <exclude>META-INF/JAXB/</exclude>
-              <exclude>benchmark-with-import.xsd</exclude>
-            </excludes>
-            <archive>
-              <index>true</index>
-              <manifest>
-                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-              </manifest>
-              <manifestEntries>
-                <Java-Version>17.0.4.1</Java-Version>
-                <Java-Vendor>Eclipse Adoptium</Java-Vendor>
-                <Os-Name>Linux</Os-Name>
-                <Os-Arch>amd64</Os-Arch>
-                <Os-Version>6.0.18-200.fc36.x86_64</Os-Version>
-              </manifestEntries>
-            </archive>
-          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
       <plugin>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.5.0</version>
         <executions>
           <execution>
-            <id>attach-javadocs</id>
             <goals>
               <goal>jar</goal>
             </goals>
-            <configuration>
-              <attach>true</attach>
-              <author>false</author>
-              <failOnError>true</failOnError>
-              <failOnWarnings>true</failOnWarnings>
-              <header combine.self="override" />
-              <footer combine.self="override" />
-              <quiet>true</quiet>
-              <archive>
-                <index>true</index>
-                <manifest>
-                  <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                  <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                </manifest>
-                <manifestEntries>
-                  <Java-Version>17.0.4.1</Java-Version>
-                  <Java-Vendor>Eclipse Adoptium</Java-Vendor>
-                  <Os-Name>Linux</Os-Name>
-                  <Os-Arch>amd64</Os-Arch>
-                  <Os-Version>6.0.18-200.fc36.x86_64</Os-Version>
-                </manifestEntries>
-              </archive>
-              <additionalparam>-Xdoclint:none</additionalparam>
-              <additionalOptions>-Xdoclint:none</additionalOptions>
-            </configuration>
           </execution>
         </executions>
-        <configuration>
-          <author>false</author>
-          <failOnError>true</failOnError>
-          <failOnWarnings>true</failOnWarnings>
-          <header combine.self="override" />
-          <footer combine.self="override" />
-          <quiet>true</quiet>
-          <archive>
-            <index>true</index>
-            <manifest>
-              <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-            </manifest>
-            <manifestEntries>
-              <Java-Version>17.0.4.1</Java-Version>
-              <Java-Vendor>Eclipse Adoptium</Java-Vendor>
-              <Os-Name>Linux</Os-Name>
-              <Os-Arch>amd64</Os-Arch>
-              <Os-Version>6.0.18-200.fc36.x86_64</Os-Version>
-            </manifestEntries>
-          </archive>
-          <additionalparam>-Xdoclint:none</additionalparam>
-          <additionalOptions>-Xdoclint:none</additionalOptions>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>3.2.1</version>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <goals>
-              <goal>jar</goal>
-              <goal>jar-no-fork</goal>
-            </goals>
-            <configuration>
-              <attach>true</attach>
-              <excludes>
-                <exclude>META-INF/JAXB/</exclude>
-                <exclude>benchmark-with-import.xsd</exclude>
-              </excludes>
-              <archive>
-                <index>true</index>
-                <manifest>
-                  <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                  <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                </manifest>
-                <manifestEntries>
-                  <Java-Version>17.0.4.1</Java-Version>
-                  <Java-Vendor>Eclipse Adoptium</Java-Vendor>
-                  <Os-Name>Linux</Os-Name>
-                  <Os-Arch>amd64</Os-Arch>
-                  <Os-Version>6.0.18-200.fc36.x86_64</Os-Version>
-                </manifestEntries>
-              </archive>
-            </configuration>
-          </execution>
-        </executions>
-        <configuration>
-          <excludes>
-            <exclude>META-INF/JAXB/</exclude>
-            <exclude>benchmark-with-import.xsd</exclude>
-          </excludes>
-          <archive>
-            <index>true</index>
-            <manifest>
-              <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-            </manifest>
-            <manifestEntries>
-              <Java-Version>17.0.4.1</Java-Version>
-              <Java-Vendor>Eclipse Adoptium</Java-Vendor>
-              <Os-Name>Linux</Os-Name>
-              <Os-Arch>amd64</Os-Arch>
-              <Os-Version>6.0.18-200.fc36.x86_64</Os-Version>
-            </manifestEntries>
-          </archive>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.10.1</version>
-        <executions>
-          <execution>
-            <id>default-compile</id>
-            <phase>compile</phase>
-            <goals>
-              <goal>compile</goal>
-            </goals>
-            <configuration>
-              <compilerArgs>
-                <arg>-Xmaxwarns</arg>
-                <arg>100</arg>
-                <arg>-Xlint</arg>
-                <arg>-Xlint:-rawtypes</arg>
-                <arg>-Xlint:-serial</arg>
-                <arg>-Xlint:-unchecked</arg>
-              </compilerArgs>
-              <showDeprecation>true</showDeprecation>
-              <showWarnings>true</showWarnings>
-              <source>1.8</source>
-              <target>11</target>
-              <testSource>1.8</testSource>
-              <testTarget>11</testTarget>
-            </configuration>
-          </execution>
-          <execution>
-            <id>default-testCompile</id>
-            <phase>test-compile</phase>
-            <goals>
-              <goal>testCompile</goal>
-            </goals>
-            <configuration>
-              <compilerArgs>
-                <arg>-Xmaxwarns</arg>
-                <arg>100</arg>
-                <arg>-Xlint</arg>
-                <arg>-Xlint:-rawtypes</arg>
-                <arg>-Xlint:-serial</arg>
-                <arg>-Xlint:-unchecked</arg>
-              </compilerArgs>
-              <showDeprecation>true</showDeprecation>
-              <showWarnings>true</showWarnings>
-              <source>1.8</source>
-              <target>11</target>
-              <testSource>1.8</testSource>
-              <testTarget>11</testTarget>
-            </configuration>
-          </execution>
-        </executions>
-        <configuration>
-          <compilerArgs>
-            <arg>-Xmaxwarns</arg>
-            <arg>100</arg>
-            <arg>-Xlint</arg>
-            <arg>-Xlint:-rawtypes</arg>
-            <arg>-Xlint:-serial</arg>
-            <arg>-Xlint:-unchecked</arg>
-          </compilerArgs>
-          <showDeprecation>true</showDeprecation>
-          <showWarnings>true</showWarnings>
-          <source>1.8</source>
-          <target>11</target>
-          <testSource>1.8</testSource>
-          <testTarget>11</testTarget>
-        </configuration>
       </plugin>
     </plugins>
   </build>
