@@ -1,0 +1,13 @@
+= Reproducer
+
+To reproduce, run:
+
+----
+mvn clean install
+----
+
+Output
+
+----
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-javadoc-plugin:3.5.0:jar (attach-javadocs) on project reproducer: Execution attach-javadocs of goal org.apache.maven.plugins:maven-javadoc-plugin:3.5.0:jar failed: Unable to derive module descriptor for /home/ge0ffrey/.m2/repository/org/openrewrite/rewrite-gradle/7.38.0/rewrite-gradle-7.38.0.jar: PluginSpec.class found in top-level directory (unnamed package not allowed in module) -> [Help 1]
+----
