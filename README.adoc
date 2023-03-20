@@ -14,3 +14,5 @@ Execution default of goal org.apache.maven.plugins:maven-javadoc-plugin:3.5.0:ja
 Unable to derive module descriptor for /.../.m2/repository/org/openrewrite/rewrite-gradle/7.38.0/rewrite-gradle-7.38.0.jar:
 PluginSpec.class found in top-level directory (unnamed package not allowed in module) -> [Help 1]
 ----
+
+Jira: https://issues.apache.org/jira/browse/MJAVADOC-747
